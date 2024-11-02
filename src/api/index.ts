@@ -1,4 +1,6 @@
-export const fetchMatches = async () => {
+import { MacthesResponse } from "../types";
+
+export const fetchMatches = async (): Promise<MacthesResponse> => {
   const localAddress = `https://filthy-amitie-pstanecki-3c17e27c.koyeb.app`;
   try {
     const response = await fetch(`${localAddress}/matches`);

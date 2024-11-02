@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { FlatList, StyleSheet, Text, View, Image } from "react-native";
+import { Text, View } from "react-native";
 import { fetchMatches } from "../../api";
-import MatchesList from "../../shared/components/MatchesList";
+import MatchesList from "../../components/MatchesList";
 
 export const Home = () => {
   const { data, isLoading, error } = useQuery({
@@ -19,7 +19,7 @@ export const Home = () => {
 
   return (
     <View>
-      {data.length === 0 ? (
+      {!data?.resultSet.count ? (
         <Text>No matches today</Text>
       ) : (
         <MatchesList matches={data.matches} />
