@@ -27,9 +27,16 @@ export enum MatchStatus {
   POSTPONED = "POSTPONED",
 }
 
-type MatchScore = {
+type Score = {
   home: null | number;
   away: null | number;
+};
+
+export type MatchScore = {
+  winner: null;
+  duration: "REGULAR";
+  fullTime: Score;
+  halfTime: Score;
 };
 
 type Team = {
@@ -38,6 +45,13 @@ type Team = {
   shortName: string;
   tla: string;
   crest: string;
+};
+
+type Referee = {
+  id: number;
+  name: string;
+  type: "REFEREE";
+  nationality: string;
 };
 
 export type Match = {
@@ -73,10 +87,10 @@ export type Match = {
   score: {
     winner: null;
     duration: "REGULAR";
-    fullTime: MatchScore;
-    halfTime: MatchScore;
+    fullTime: Score;
+    halfTime: Score;
   };
-  referees: [];
+  referees: Referee[];
 };
 
 export type MacthesResponse = {
